@@ -12,7 +12,6 @@ var array = function (o) {
 };
 
 exports.email = function (data, done) {
-  return done()
   utils.ses().sendEmail({
     Destination: {
       BccAddresses: array(data.bcc),
