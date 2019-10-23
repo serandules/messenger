@@ -10,7 +10,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "lodash": "4.17.4",
+    "lodash": "4.17.15",
     "async": "1.*",
     "logger": "serandules/logger#master",
     "utils": "serandules/utils#master",
