@@ -12,6 +12,8 @@
   "dependencies": {
     "lodash": "4.17.4",
     "async": "1.*",
+    "nconf": "0.10.0",
+    "request": "2.81.0",
     "logger": "serandules/logger#master",
     "utils": "serandules/utils#master",
     "serandi": "serandules/serandi#master"

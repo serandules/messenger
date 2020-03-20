@@ -1,8 +1,16 @@
 var log = require('logger')('messenger');
+var errors = require('errors');
 var fs = require('fs');
 var async = require('async');
+var nconf = require('nconf');
+var request = require('request');
 
 var utils = require('utils');
+
+var smsGateway = 'https://sms.textware.lk:5001/sms/send_sms.php';
+
+var smsUser = nconf.get('SMS_USERNAME');
+var smsPass = nconf.get('SMS_PASSWORD');
 
 var array = function (o) {
   if (!o) {
@@ -46,5 +54,30 @@ exports.email = function (data, done) {
       return done(err);
     }
     done(null, data);
+  });
+};
+
+exports.sms = function (data, done) {
+  request({
+    method: 'POST',
+    uri: smsGateway,
+    form: {
+      username: smsUser,
+      password: smsPass,
+      src: data.sender,
+      dst: data.phone,
+      msg: data.message,
+      dr: 1
+    }
+  }, function (e, r, b) {
+    if (e) {
+      log.error('sms:error', e);
+      return done(errors.serverError());
+    }
+    if (r.statusCode !== 200) {
+      log.error('sms:failure', b);
+      return done(errors.serverError());
+    }
+    done();
   });
 };
