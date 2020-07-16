@@ -10,7 +10,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "lodash": "4.17.4",
+    "lodash": "4.17.19",
     "async": "1.*",
     "nconf": "0.10.0",
     "request": "2.81.0",
