@@ -15,8 +15,7 @@
     "nconf": "0.10.0",
     "request": "2.81.0",
     "logger": "serandules/logger#master",
-    "utils": "serandules/utils#master",
-    "serandi": "serandules/serandi#master"
+    "sera": "serandules/sera#master"
   },
   "devDependencies": {
     "mocha": "3.2.0",

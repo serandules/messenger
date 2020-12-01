@@ -1,11 +1,9 @@
 var log = require('logger')('messenger');
 var errors = require('errors');
-var fs = require('fs');
-var async = require('async');
 var nconf = require('nconf');
 var request = require('request');
 
-var utils = require('utils');
+var sera = require('sera');
 
 var smsGateway = 'https://sms.textware.lk:5001/sms/send_sms.php';
 
@@ -20,10 +18,10 @@ var array = function (o) {
 };
 
 exports.email = function (data, done) {
-  if (utils.env() === 'test') {
+  if (sera.utils.env() === 'test') {
     return done()
   }
-  utils.ses().sendEmail({
+  sera.utils.ses().sendEmail({
     Destination: {
       BccAddresses: array(data.bcc),
       CcAddresses: array(data.cc),
